@@ -1,0 +1,792 @@
+<div class="side-bar-mobile">
+  <div class="side-bar-mobile__mask"></div>
+  <div class="side-bar-mobile__block">
+    <!-- Left sidebar here -->
+    <div class="left-sidebar-mb">
+      <div class="row">
+        <div class="col-12">
+          <div class="left-sidebar__search">
+            <h3 class="left-sidebar__search-heading">SEARCH</h3>
+            <div class="left-sidebar__search-group">
+              <input
+                class="left-sidebar__search-input"
+                placeholder="Search your keyword..."
+                [(ngModel)]="inputVal"
+                (click)="toggle($event)"
+              />
+              <ul class="left-sidebar__search-result">
+                <ng-container *ngFor="let p of searchProducts">
+                  <li
+                    class="left-sidebar__search-result-item"
+                    [routerLink]="['/shop-details', p.id]"
+                  >
+                    <img
+                      src="../.{{ p.image }}"
+                      alt=""
+                      class="left-sidebar__search-result-img"
+                    />
+                    <div class="left-sidebar__search-result-info">
+                      <div class="left-sidebar__search-result-title">
+                        {{ p.title }}
+                      </div>
+                      <span class="left-sidebar__search-result-price"
+                        >Price: {{ formatter.format(p.price.new) }}</span
+                      >
+                    </div>
+                  </li>
+                </ng-container>
+              </ul>
+              <div class="left-sidebar__search-icon">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="left-sidebar__price-filter">
+            <h3 class="left-sidebar__price-filter-heading">PRICE FILTER</h3>
+
+            <input
+              class="price-progress-mb"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+            />
+
+            <div class="left-sidebar__price-filter-group">
+              <h3 class="left-sidebar__price-filter-money">
+                Price" {{ formatter.format(0) }} -
+                {{ formatter.format((priceProgress / 100) * 400000000) }}
+              </h3>
+              <button
+                class="left-sidebar__price-filter-btn"
+                (click)="
+                  loadProductByPriceFilter(
+                    (priceProgress / 100) * 400000000,
+                    currentPage
+                  )
+                "
+              >
+                FILTER
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="left-sidebar__color-filter">
+            <h3 class="left-sidebar__color-filter-heading">COLOR FILTER</h3>
+            <div
+              class="left-sidebar__color-filter-group color-blue"
+              data-color="blue"
+            >
+              <span class="left-sidebar__color-filter-text">Blue (15)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #03aeef"
+              ></div>
+            </div>
+            <div
+              class="left-sidebar__color-filter-group color-red"
+              data-color="red"
+            >
+              <span class="left-sidebar__color-filter-text">Red (09)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #f52475"
+              ></div>
+            </div>
+            <div
+              class="left-sidebar__color-filter-group color-green"
+              data-color="green"
+            >
+              <span class="left-sidebar__color-filter-text">Green (28)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #25d5ac"
+              ></div>
+            </div>
+            <div
+              class="left-sidebar__color-filter-group color-orange"
+              data-color="orange"
+            >
+              <span class="left-sidebar__color-filter-text">Orange (11)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #ff7e00"
+              ></div>
+            </div>
+            <div
+              class="left-sidebar__color-filter-group color-black"
+              data-color="black"
+            >
+              <span class="left-sidebar__color-filter-text">Black (05)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #000000"
+              ></div>
+            </div>
+            <div
+              class="left-sidebar__color-filter-group color-purple"
+              data-color="purple"
+            >
+              <span class="left-sidebar__color-filter-text">Purple (21)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #92399a"
+              ></div>
+            </div>
+            <div
+              class="left-sidebar__color-filter-group color-purple"
+              data-color="grey"
+            >
+              <span class="left-sidebar__color-filter-text">Grey (12)</span>
+              <div
+                class="left-sidebar__color-filter-clr"
+                style="background-color: #92399a"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-12">
+          <div class="left-sidebar__size-filter">
+            <h3 class="left-sidebar__size-filter-heading">SIZE FILTER</h3>
+
+            <div class="left-sidebar__size-filter-group-mb">
+              <input
+                hidden
+                type="checkbox"
+                class="left-sidebar__size-filter-radio-mb"
+                id="xs"
+              />
+              <label for="xs" class="left-sidebar__size-filter-label-mb"
+                >X-small</label
+              >
+            </div>
+            <div class="left-sidebar__size-filter-group-mb">
+              <input
+                hidden
+                type="checkbox"
+                class="left-sidebar__size-filter-radio-mb"
+                id="s"
+              />
+              <label for="s" class="left-sidebar__size-filter-label-mb"
+                >Small</label
+              >
+            </div>
+            <div class="left-sidebar__size-filter-group-mb">
+              <input
+                hidden
+                type="checkbox"
+                class="left-sidebar__size-filter-radio-mb"
+                id="md"
+              />
+              <label for="md" class="left-sidebar__size-filter-label-mb"
+                >Medium</label
+              >
+            </div>
+            <div class="left-sidebar__size-filter-group-mb">
+              <input
+                hidden
+                type="checkbox"
+                class="left-sidebar__size-filter-radio-mb"
+                id="l"
+              />
+              <label for="l" class="left-sidebar__size-filter-label-mb"
+                >Large</label
+              >
+            </div>
+            <div class="left-sidebar__size-filter-group-mb">
+              <input
+                hidden
+                type="checkbox"
+                class="left-sidebar__size-filter-radio-mb"
+                id="xxl"
+              />
+              <label for="xxl" class="left-sidebar__size-filter-label-mb"
+                >XXL</label
+              >
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-12">
+          <div class="left-sidebar__category">
+            <h3 class="left-sidebar__category-heading">CATEGORY</h3>
+            <div
+              class="left-sidebar__category-group"
+              data-category="fashion"
+              id=""
+            >
+              <span class="left-sidebar__category-text">Thời trang</span>
+              <span class="left-sidebar__category-num">{{
+                this.fashionAmount
+              }}</span>
+            </div>
+            <div class="left-sidebar__category-group" data-category="shoes">
+              <span class="left-sidebar__category-text">Giày & Sneaker</span>
+              <span class="left-sidebar__category-num">{{
+                this.shoesAmount
+              }}</span>
+            </div>
+            <div class="left-sidebar__category-group" data-category="bag">
+              <span class="left-sidebar__category-text">Túi xách</span>
+              <span class="left-sidebar__category-num">{{
+                this.bagAmount
+              }}</span>
+            </div>
+            <div class="left-sidebar__category-group" data-category="sale">
+              <span class="left-sidebar__category-text">Sale Products</span>
+              <span class="left-sidebar__category-num">{{
+                this.saleAmount
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="left-sidebar__popular-tag">
+            <h3 class="left-sidebar__popular-tag-heading">Popular Tags</h3>
+            <div class="left-sidebar__popular-tag-group">
+              <h3
+                class="left-sidebar__popular-tag-item left-sidebar__popular-tag-item--selected"
+              >
+                Sweetshirt
+              </h3>
+              <h3 class="left-sidebar__popular-tag-item">Man Accessories</h3>
+              <h3 class="left-sidebar__popular-tag-item">Fashion</h3>
+              <h3 class="left-sidebar__popular-tag-item">Pop</h3>
+              <h3 class="left-sidebar__popular-tag-item">T-Shirt</h3>
+              <h3 class="left-sidebar__popular-tag-item">Jewellery</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="banner-details">
+  <div class="contaier-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="banner-details__block">
+          <h2 class="banner-details__heading">SHOP PAGE</h2>
+          <div class="banner-details__direction">
+            <div class="banner-details__home">
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-angle-double-right"></i>
+            <h3 class="banner-details__element banner-details__element--now">
+              Shop page
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="left-sidebar">
+          <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar__search">
+                <h3 class="left-sidebar__search-heading">SEARCH</h3>
+                <div class="left-sidebar__search-group">
+                  <input
+                    class="left-sidebar__search-input"
+                    placeholder="Search your keyword..."
+                    [(ngModel)]="inputVal"
+                    (click)="toggle($event)"
+                  />
+                  <ul class="left-sidebar__search-result">
+                    <ng-container *ngFor="let p of searchProducts">
+                      <li
+                        class="left-sidebar__search-result-item"
+                        [routerLink]="['/shop-details', p.id]"
+                      >
+                        <img
+                          src="../.{{ p.image }}"
+                          alt=""
+                          class="left-sidebar__search-result-img"
+                        />
+                        <div class="left-sidebar__search-result-info">
+                          <div class="left-sidebar__search-result-title">
+                            {{ p.title }}
+                          </div>
+                          <span class="left-sidebar__search-result-price"
+                            >Price: {{ formatter.format(p.price.new) }}</span
+                          >
+                        </div>
+                      </li>
+                    </ng-container>
+                  </ul>
+                  <div class="left-sidebar__search-icon">
+                    <i class="fas fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar__price-filter">
+                <h3 class="left-sidebar__price-filter-heading">PRICE FILTER</h3>
+
+                <input
+                  class="price-progress"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                />
+
+                <div class="left-sidebar__price-filter-group">
+                  <h3 class="left-sidebar__price-filter-money">
+                    Price" {{ formatter.format(0) }} -
+                    {{ formatter.format((priceProgress / 100) * 400000000) }}
+                  </h3>
+                  <button
+                    class="left-sidebar__price-filter-btn"
+                    (click)="
+                      loadProductByPriceFilter(
+                        (priceProgress / 100) * 400000000,
+                        currentPage
+                      )
+                    "
+                  >
+                    FILTER
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar__color-filter">
+                <h3 class="left-sidebar__color-filter-heading">COLOR FILTER</h3>
+                <div
+                  class="left-sidebar__color-filter-group color-blue"
+                  data-color="white"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >White ({{ this.whiteColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #ffffff; border: 1px solid #b4b4b4"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-blue"
+                  data-color="blue"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Blue ({{ this.blueColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #03aeef"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-red"
+                  data-color="red"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Red ({{ this.redColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #f52475"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-green"
+                  data-color="green"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Green ({{ this.greenColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #25d5ac"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-orange"
+                  data-color="orange"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Orange ({{ this.orangeColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #ff7e00"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-black"
+                  data-color="black"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Black ({{ this.blackColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #000000"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-purple"
+                  data-color="purple"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Purple ({{ this.purpleColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #92399a"
+                  ></div>
+                </div>
+                <div
+                  class="left-sidebar__color-filter-group color-purple"
+                  data-color="grey"
+                >
+                  <span class="left-sidebar__color-filter-text"
+                    >Grey ({{ this.greyColorAmount }})</span
+                  >
+                  <div
+                    class="left-sidebar__color-filter-clr"
+                    style="background-color: #868a93"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar__size-filter">
+                <h3 class="left-sidebar__size-filter-heading">SIZE FILTER</h3>
+
+                <div class="left-sidebar__size-filter-group">
+                  <input
+                    hidden
+                    type="checkbox"
+                    class="left-sidebar__size-filter-radio"
+                    id="xs"
+                  />
+                  <label for="xs" class="left-sidebar__size-filter-label"
+                    >X-small</label
+                  >
+                </div>
+                <div class="left-sidebar__size-filter-group">
+                  <input
+                    hidden
+                    type="checkbox"
+                    class="left-sidebar__size-filter-radio"
+                    id="s"
+                  />
+                  <label for="s" class="left-sidebar__size-filter-label"
+                    >Small</label
+                  >
+                </div>
+                <div class="left-sidebar__size-filter-group">
+                  <input
+                    hidden
+                    type="checkbox"
+                    class="left-sidebar__size-filter-radio"
+                    id="md"
+                  />
+                  <label for="md" class="left-sidebar__size-filter-label"
+                    >Medium</label
+                  >
+                </div>
+                <div class="left-sidebar__size-filter-group">
+                  <input
+                    hidden
+                    type="checkbox"
+                    class="left-sidebar__size-filter-radio"
+                    id="l"
+                  />
+                  <label for="l" class="left-sidebar__size-filter-label"
+                    >Large</label
+                  >
+                </div>
+                <div class="left-sidebar__size-filter-group">
+                  <input
+                    hidden
+                    type="checkbox"
+                    class="left-sidebar__size-filter-radio"
+                    id="xxl"
+                  />
+                  <label for="xxl" class="left-sidebar__size-filter-label"
+                    >XXL</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar__category">
+                <h3 class="left-sidebar__category-heading">CATEGORY</h3>
+                <div
+                  class="left-sidebar__category-group"
+                  data-category="fashion"
+                  id=""
+                >
+                  <span class="left-sidebar__category-text">Thời trang</span>
+                  <span class="left-sidebar__category-num">{{
+                    this.fashionAmount
+                  }}</span>
+                </div>
+                <div class="left-sidebar__category-group" data-category="shoes">
+                  <span class="left-sidebar__category-text"
+                    >Giày & Sneaker</span
+                  >
+                  <span class="left-sidebar__category-num">{{
+                    this.shoesAmount
+                  }}</span>
+                </div>
+                <div class="left-sidebar__category-group" data-category="bag">
+                  <span class="left-sidebar__category-text">Túi xách</span>
+                  <span class="left-sidebar__category-num">{{
+                    this.bagAmount
+                  }}</span>
+                </div>
+                <div class="left-sidebar__category-group" data-category="sale">
+                  <span class="left-sidebar__category-text">Sale Products</span>
+                  <span class="left-sidebar__category-num">{{
+                    this.saleAmount
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar__popular-tag">
+                <h3 class="left-sidebar__popular-tag-heading">Popular Tags</h3>
+                <div class="left-sidebar__popular-tag-group">
+                  <h3
+                    class="left-sidebar__popular-tag-item left-sidebar__popular-tag-item--selected"
+                  >
+                    Sweetshirt
+                  </h3>
+                  <h3 class="left-sidebar__popular-tag-item">
+                    Man Accessories
+                  </h3>
+                  <h3 class="left-sidebar__popular-tag-item">Fashion</h3>
+                  <h3 class="left-sidebar__popular-tag-item">Pop</h3>
+                  <h3 class="left-sidebar__popular-tag-item">T-Shirt</h3>
+                  <h3 class="left-sidebar__popular-tag-item">Jewellery</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="right-content">
+          <div class="row">
+            <div class="col-12">
+              <div class="right-content__option">
+                <div class="right-content__option-view">
+                  <span>View</span>
+                  <i class="fas fa-th right-content__option-view-grid"></i>
+                  <i class="fas fa-list right-content__option-view-list"></i>
+                </div>
+                <div class="right-content__option-sort">
+                  <select class="select-sort">
+                    <option class="select-sort__default" value="default">
+                      Sort By Default
+                      <i class="fas fa-chevron-down"></i>
+                    </option>
+                    <option class="select-sort__asc" value="asc">
+                      Giá thấp -> cao
+                      <i class="fas fa-chevron-down"></i>
+                    </option>
+                    <option class="select-sort__desc" value="desc">
+                      Giá cao -> thấp
+                      <i class="fas fa-chevron-down"></i>
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="left-sidebar-mobile">
+                <i class="left-sidebar-mobile__icon fas fa-list"></i>
+                <span>Bộ Lọc Tìm Kiếm</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <ng-container *ngFor="let product of products">
+              <div class="col-sm-6">
+                <div class="product__block">
+                  <div class="product__img">
+                    <img
+                      [routerLink]="['/shop-details', product.id]"
+                      src="{{ product.image }}"
+                      alt=""
+                    />
+                    <div class="product__hover">
+                      <div class="product__hover-search">
+                        <i class="fas fa-search"></i>
+                      </div>
+                      <div
+                        (click)="addProduct(product)"
+                        class="product__hover-bag"
+                      >
+                        <i class="fas fa-shopping-bag"></i>
+                      </div>
+                      <div class="product__hover-love">
+                        <i class="far fa-heart"></i>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="product.sale == true; else noSale"
+                      class="product__sale"
+                    >
+                      <h4>SALE</h4>
+                    </div>
+                    <ng-template #noSale></ng-template>
+                  </div>
+                  <div *ngIf="product.rating.rate == 5" class="product__rate">
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                  </div>
+                  <div *ngIf="product.rating.rate == 4" class="product__rate">
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div *ngIf="product.rating.rate == 3" class="product__rate">
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div *ngIf="product.rating.rate == 2" class="product__rate">
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div *ngIf="product.rating.rate == 1" class="product__rate">
+                    <i class="fas fa-star fa-star--rating"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h3
+                    [routerLink]="['/shop-details', product.id]"
+                    class="product__name"
+                  >
+                    {{ product.title }}
+                  </h3>
+                  <div class="product__price">
+                    <h3 class="product__new-price">
+                      {{ formatter.format(product.price.new) }}
+                    </h3>
+                    <h3 class="product__old-price">
+                      {{ formatter.format(product.price.old) }}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ul class="pagination">
+                <li (click)="prevPage()" class="pagination-item">
+                  <a class="pagination-item__link pagination-item__link-prev">
+                    <i class="pagination-item__icon fas fa-angle-left"></i>
+                    <span>PREVIOUS</span>
+                  </a>
+                </li>
+                <div class="d-flex">
+                  <li class="pagination-item pagination-item--active">
+                    <a class="pagination-item__link">{{ this.currentPage }}</a>
+                  </li>
+                  <!-- <li *ngIf="this.pageNumber >= 2" class="pagination-item">
+                                      <a class="pagination-item__link">2</a>
+                                    </li>
+                                    <li *ngIf="this.pageNumber >= 3" class="pagination-item">
+                                      <a class="pagination-item__link">3</a>
+                                    </li>
+                                    <li *ngIf="this.pageNumber > 4" class="pagination-item">
+                                      <a class="pagination-item__link pagination-item__link-no-pointer">...</a>
+                                    </li>
+                                    <li *ngIf="this.pageNumber >= 4" class="pagination-item">
+                                      <a class="pagination-item__link">{{this.pageNumber}}</a>
+                                    </li> -->
+                </div>
+                <li (click)="nextPage()" class="pagination-item">
+                  <a class="pagination-item__link pagination-item__link-next">
+                    <span>NEXT</span>
+                    <i class="pagination-item__icon fas fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="toast">
+            <!-- Success -->
+            <div class="toast toast--success">
+              <div class="toast__icon">
+                <i class="far fa-check-circle"></i>
+              </div>
+              <div class="toast__body">
+                <h3 class="toast__title">Success</h3>
+                <p class="toast__msg">Add product success!</p>
+              </div>
+              <div class="toast__close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <!-- Error -->
+            <div class="toast toast--error">
+              <div class="toast__icon">
+                <i class="far fa-check-circle"></i>
+              </div>
+              <div class="toast__body">
+                <h3 class="toast__title">Error</h3>
+                <p class="toast__msg">Product is already added!</p>
+              </div>
+              <div class="toast__close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

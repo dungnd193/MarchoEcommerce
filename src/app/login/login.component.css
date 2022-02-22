@@ -1,0 +1,99 @@
+.content {
+  margin: 120px 0;
+}
+
+.register,
+.login {
+  outline: none;
+  border: none;
+  background: white;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 10px 30px 60px;
+  cursor: pointer;
+  color: #909090;
+}
+
+.login.login--selected {
+  color: #fe3e57;
+  font-weight: bold;
+}
+
+.login__form-user,
+.login__form-password {
+  margin-bottom: 40px;
+}
+
+.login__form-user-text,
+.login__form-password-text {
+  color: #8d8d8d;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.login__form-user-input,
+.login__form-password-input {
+  border: none;
+  outline: none;
+  background: #f6f6f6;
+  padding: 10px 20px;
+}
+
+.remember-block {
+  margin-bottom: 10px;
+}
+
+.remember-block__label {
+  color: #8d8d8d;
+  font-size: 16px;
+  font-weight: 300;
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+}
+
+.remember-block__label:before {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #8d8d8d;
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.remember-block__label:after {
+  width: 4px;
+  height: 8px;
+  border-right: 1px solid #8d8d8d;
+  border-bottom: 1px solid #8d8d8d;
+  position: absolute;
+  content: "";
+  top: calc(50% - 1px);
+  left: 6px;
+  transform: translateY(-50%) rotate(45deg);
+  display: none;
+}
+
+#remeber-block__checkbox:checked ~ .remember-block__label:after {
+  display: block;
+}
+
+.login__form-btn {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.login__form-forgot {
+  color: #fe3e57;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 20px;
+}

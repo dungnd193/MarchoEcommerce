@@ -1,0 +1,856 @@
+<div class="banner-details">
+  <div class="contaier-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="banner-details__block">
+          <h2 class="banner-details__heading">SHOP PAGE DETAILS</h2>
+          <div class="banner-details__direction">
+            <div class="banner-details__home">
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-angle-double-right"></i>
+            <h3 class="banner-details__element">Shop Page</h3>
+            <i class="fas fa-angle-double-right"></i>
+            <h3 class="banner-details__element banner-details__element--now">
+              Shop Page Details
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-2dot4">
+            <div class="shop-details__gallery-small">
+              <!-- <div> -->
+              <img
+                src="../assets/img/shop-details-1.jpg"
+                alt=""
+                class="shop-details__gallery-small-img"
+              />
+              <!-- </div> -->
+              <!-- <div> -->
+              <img
+                src="../assets/img/shop-details-2.jpg"
+                alt=""
+                class="shop-details__gallery-small-img"
+              />
+              <!-- </div> -->
+              <!-- <div> -->
+              <img
+                src="../assets/img/shop-details-3.jpg"
+                alt=""
+                class="shop-details__gallery-small-img"
+              />
+              <!-- </div> -->
+              <!-- <div> -->
+              <img
+                src="../assets/img/shop-details-4.jpg"
+                alt=""
+                class="shop-details__gallery-small-img"
+              />
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="col-lg-9dot6">
+            <div class="shop-details__gallery-big">
+              <img
+                style="width: 100%"
+                src="{{ product.image }}"
+                alt=""
+                class=""
+              />
+            </div>
+          </div>
+          <div class="shop-details__gallery-mobile">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-3">
+                  <img
+                    src="./assets/img/shop-details-1.jpg"
+                    alt=""
+                    class="shop-details__gallery-small-img"
+                  />
+                </div>
+                <div class="col-3">
+                  <img
+                    src="./assets/img/shop-details-2.jpg"
+                    alt=""
+                    class="shop-details__gallery-small-img"
+                  />
+                </div>
+                <div class="col-3">
+                  <img
+                    src="./assets/img/shop-details-3.jpg"
+                    alt=""
+                    class="shop-details__gallery-small-img"
+                  />
+                </div>
+                <div class="col-3">
+                  <img
+                    src="./assets/img/shop-details-4.jpg"
+                    alt=""
+                    class="shop-details__gallery-small-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="shop-details__information">
+          <h3 class="shop-details__title">{{ product.title }}</h3>
+          <div class="shop-details__price-and-rating">
+            <div class="shop-details__price">
+              <h3 class="shop-details__new-price">
+                {{ formatter.format(product.price.new) }}
+              </h3>
+              <h3 class="shop-details__old-price">
+                {{ formatter.format(product.price.old) }}
+              </h3>
+            </div>
+
+            <div *ngIf="product.rating.rate == 5" class="shop-details__rating">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <span class="shop-details__rating-amount"
+                >({{ product.rating.count }})</span
+              >
+            </div>
+            <div *ngIf="product.rating.rate == 4" class="shop-details__rating">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <span class="shop-details__rating-amount"
+                >({{ product.rating.count }})</span
+              >
+            </div>
+            <div *ngIf="product.rating.rate == 3" class="shop-details__rating">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span class="shop-details__rating-amount"
+                >({{ product.rating.count }})</span
+              >
+            </div>
+            <div *ngIf="product.rating.rate == 2" class="shop-details__rating">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span class="shop-details__rating-amount"
+                >({{ product.rating.count }})</span
+              >
+            </div>
+            <div *ngIf="product.rating.rate == 1" class="shop-details__rating">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span class="shop-details__rating-amount"
+                >({{ product.rating.count }})</span
+              >
+            </div>
+          </div>
+          <div class="shop-details__short-review">
+            <strong>Review:</strong>
+            <p>{{ product.description }}</p>
+          </div>
+          <div class="shop-details__colors">
+            <strong>Color:</strong>
+            <div class="shop-details__colors-group">
+              <div class="shop-details__color">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__color-radio"
+                  id="pink"
+                />
+                <label for="pink" class="shop-details__color-label"></label>
+              </div>
+              <div class="shop-details__color">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__color-radio"
+                  id="gray"
+                />
+                <label for="gray" class="shop-details__color-label"></label>
+              </div>
+              <div class="shop-details__color">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__color-radio"
+                  id="yellow"
+                />
+                <label for="yellow" class="shop-details__color-label"></label>
+              </div>
+              <div class="shop-details__color">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__color-radio"
+                  id="purple"
+                />
+                <label for="purple" class="shop-details__color-label"></label>
+              </div>
+              <div class="shop-details__color">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__color-radio"
+                  id="green"
+                />
+                <label for="green" class="shop-details__color-label"></label>
+              </div>
+              <div class="shop-details__color">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__color-radio"
+                  id="red"
+                />
+                <label for="red" class="shop-details__color-label"></label>
+              </div>
+            </div>
+          </div>
+          <div class="shop-details__size">
+            <strong>Size:</strong>
+            <div class="shop-details__size-group">
+              <div class="shop-details__size-element">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__size-radio"
+                  id="sizeXS"
+                />
+                <label for="sizeXS" class="shop-details__size-label">XS</label>
+              </div>
+              <div class="shop-details__size-element">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__size-radio"
+                  id="sizeS"
+                />
+                <label for="sizeS" class="shop-details__size-label">S</label>
+              </div>
+              <div class="shop-details__size-element">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__size-radio"
+                  id="sizeM"
+                />
+                <label for="sizeM" class="shop-details__size-label">M</label>
+              </div>
+              <div class="shop-details__size-element">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__size-radio"
+                  id="sizeL"
+                />
+                <label for="sizeL" class="shop-details__size-label">L</label>
+              </div>
+              <div class="shop-details__size-element">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__size-radio"
+                  id="sizeXL"
+                />
+                <label for="sizeXL" class="shop-details__size-label">XL</label>
+              </div>
+              <div class="shop-details__size-element">
+                <input
+                  type="checkbox"
+                  hidden
+                  class="shop-details__size-radio"
+                  id="sizeXXL"
+                />
+                <label for="sizeXXL" class="shop-details__size-label"
+                  >XXL</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="shop-details__product-info">
+            <div class="row mb-6">
+              <div class="col-4">
+                <span class="shop-details__product-info-title">SKU</span>
+              </div>
+              <div class="col-8">
+                <span class="shop-details__product-info-description"
+                  >ID{{ product.id }}SHOPDETAILS</span
+                >
+              </div>
+            </div>
+            <div class="row mb-6">
+              <div class="col-4">
+                <span class="shop-details__product-info-title">Categories</span>
+              </div>
+              <div class="col-8">
+                <span class="shop-details__product-info-description">{{
+                  product.category
+                }}</span>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <div class="col-4">
+                <span class="shop-details__product-info-title">Tags</span>
+              </div>
+              <div class="col-8">
+                <span class="shop-details__product-info-description"
+                  >Fashion | Woman | Sale</span
+                >
+              </div>
+            </div>
+            <div class="row mb-6">
+              <div class="col-4">
+                <span class="shop-details__product-info-title">Share</span>
+              </div>
+              <div class="col-8">
+                <ul class="shop-details__product-info-icon-list">
+                  <li class="shop-details__product-info-icon-item">
+                    <a href="" class="shop-details__product-info-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                  </li>
+                  <li class="shop-details__product-info-icon-item">
+                    <a href="" class="shop-details__product-info-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="shop-details__product-info-icon-item">
+                    <a href="" class="shop-details__product-info-icon">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li class="shop-details__product-info-icon-item">
+                    <a href="" class="shop-details__product-info-icon">
+                      <i class="fab fa-pinterest-p"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="shop-details__add">
+            <div style="display: none" class="shop-details__add-amount">
+              <i class="fas fa-minus"></i>
+              <span class="shop-details__add-amount-text">01</span>
+              <i class="fas fa-plus"></i>
+            </div>
+            <button class="shop-details__add-btn" (click)="addProduct(product)">
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            <!-- Shop Details Action Start -->
+            <ul class="shop-details__action-list">
+              <li class="shop-details__action-item">Description</li>
+              <li class="shop-details__action-item">Addtion information</li>
+              <li
+                class="shop-details__action-item shop-details__action-item--selected"
+              >
+                Reviews
+              </li>
+            </ul>
+            <!-- Shop Details Action End -->
+          </div>
+        </div>
+        <ng-container *ngFor="let comment of comments">
+          <div class="row mb-40">
+            <div class="col-1">
+              <div class="shop-details__avt">
+                <img src="./assets/img/avt-comment-1.jpeg" alt="" />
+              </div>
+            </div>
+            <div class="col-11">
+              <div class="shop-details__human">
+                <h3 class="shop-details__name">{{ comment.name }}</h3>
+                <span class="shop-details__time">{{ comment.date }}</span>
+              </div>
+              <span class="shop-details__mail">{{ comment.email }}</span>
+              <div *ngIf="comment.rate == 5" class="shop-details__rating">
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+              </div>
+              <div *ngIf="comment.rate == 4" class="shop-details__rating">
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div *ngIf="comment.rate == 3" class="shop-details__rating">
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div *ngIf="comment.rate == 2" class="shop-details__rating">
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div *ngIf="comment.rate == 1" class="shop-details__rating">
+                <i class="fas fa-star fa-star--rating"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="shop-details__comment">{{ comment.body }}</p>
+              <div class="shop-details__reply">
+                <i class="fas fa-reply"></i>
+                <span>Reply</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- <div class="row mb-40">
+                  <div class="col-1">
+                      <div class="shop-details__avt">
+                          <img src="./assets/img/avt-comment-1.jpeg" alt="">
+                      </div>
+                  </div>
+                  <div class="col-11">
+                      <div class="shop-details__human">
+                          <h3 class="shop-details__name">Michle Jhon</h3>
+                          <span class="shop-details__time">2 days ago</span>
+                      </div>
+                      <span class="shop-details__mail">demo@gmail.com</span>
+                      <p class="shop-details__comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Qus ipsum speissei ultrices gravida. Risus commodo viverra maeenas accumsan lacus vel facilisis. </p>
+                      <div class="shop-details__reply">
+                          <i class="fas fa-reply"></i>
+                          <span>Reply</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mb-40">
+                  <div class="col-1">
+                      <div class="shop-details__avt">
+                          <img src="./assets/img/avt-comment-1.jpeg" alt="">
+                      </div>
+                  </div>
+                  <div class="col-11">
+                      <div class="shop-details__human">
+                          <h3 class="shop-details__name">Michle Jhon</h3>
+                          <span class="shop-details__time">2 days ago</span>
+                      </div>
+                      <p class="shop-details__comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Qus ipsum speissei ultrices gravida. Risus commodo viverra maeenas accumsan lacus vel facilisis. </p>
+                      <div class="shop-details__reply">
+                          <i class="fas fa-reply"></i>
+                          <span>Reply</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mb-40">
+                  <div class="col-1">
+                      <div class="shop-details__avt">
+                          <img src="./assets/img/avt-comment-1.jpeg" alt="">
+                      </div>
+                  </div>
+                  <div class="col-11">
+                      <div class="shop-details__human">
+                          <h3 class="shop-details__name">Michle Jhon</h3>
+                          <span class="shop-details__time">2 days ago</span>
+                      </div>
+                      <p class="shop-details__comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Qus ipsum speissei ultrices gravida. Risus commodo viverra maeenas accumsan lacus vel facilisis. </p>
+                      <div class="shop-details__reply">
+                          <i class="fas fa-reply"></i>
+                          <span>Reply</span>
+                      </div>
+                  </div>
+              </div>  -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!-- My Review Start -->
+        <div class="row">
+          <div class="col-12">
+            <h3 class="my-review__heading">Add your review</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="my-review__rating">
+              <h3 class="my-review__rating-text">Your Rating</h3>
+              <div class="rating-group my-review__rating-one-star">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="rating-group my-review__rating-two-star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="rating-group my-review__rating-three-star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="rating-group my-review__rating-four-star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div
+                class="rating-group my-review__rating-five-star my-review__rated"
+              >
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form action="" [formGroup]="formReview" (ngSubmit)="addReview()">
+          <div class="row">
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="my-review__name-input"
+                placeholder="Your name"
+                formControlName="name"
+              />
+              <p
+                style="color: red"
+                *ngIf="(formReview.get('name')?.invalid || formReview.get('name')?.errors?.['required']) && (formReview.get('name')?.dirty || formReview.get('name')?.touched)"
+              >
+                Vui lòng nhập tên!
+              </p>
+            </div>
+            <div class="col-md-6">
+              <input
+                type="text"
+                class="my-review__email-input"
+                placeholder="E-mail address"
+                formControlName="email"
+              />
+              <p
+                style="color: red"
+                *ngIf="(formReview.get('email')?.invalid || formReview.get('email')?.errors?.['email']) && (formReview.get('email')?.dirty || formReview.get('email')?.touched)"
+              >
+                Vui lòng nhập email!
+              </p>
+            </div>
+            <div class="col-12">
+              <textarea
+                class="my-review__text-area"
+                rows="6"
+                cols="50"
+                placeholder="Describe yourself here..."
+                formControlName="body"
+              ></textarea>
+              <p
+                style="color: red"
+                *ngIf="(formReview.get('body')?.invalid || formReview.get('body')?.errors?.['required']) && (formReview.get('body')?.dirty || formReview.get('body')?.touched)"
+              >
+                Không để trống trường này!
+              </p>
+            </div>
+            <div class="col-12 tx-alg-c">
+              <button class="my-review__btn" type="submit">LEAVE REVIEW</button>
+            </div>
+          </div>
+        </form>
+        <!-- My Review End -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="related-product">
+          <h2 class="related-product__title">RELATED PRODUCTS</h2>
+        </div>
+      </div>
+      <ng-container *ngFor="let product of productMoreList">
+        <div class="col-lg-4 col-md-6">
+          <div class="product__block">
+            <div class="product__img">
+              <img
+                [routerLink]="['/shop-details', product.id]"
+                src="{{ product.image }}"
+                alt=""
+              />
+              <div class="product__hover">
+                <div class="product__hover-search">
+                  <i class="fas fa-search"></i>
+                </div>
+                <div (click)="addProduct(product)" class="product__hover-bag">
+                  <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="product__hover-love">
+                  <i class="far fa-heart"></i>
+                </div>
+              </div>
+              <div
+                *ngIf="product.sale == true; else noSale"
+                class="product__sale"
+              >
+                <h4>SALE</h4>
+              </div>
+              <ng-template #noSale></ng-template>
+            </div>
+            <div *ngIf="product.rating.rate == 5" class="product__rate">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+            </div>
+            <div *ngIf="product.rating.rate == 4" class="product__rate">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div *ngIf="product.rating.rate == 3" class="product__rate">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div *ngIf="product.rating.rate == 2" class="product__rate">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div *ngIf="product.rating.rate == 1" class="product__rate">
+              <i class="fas fa-star fa-star--rating"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h3
+              [routerLink]="['/shop-details', product.id]"
+              class="product__name"
+            >
+              {{ product.title }}
+            </h3>
+            <div class="product__price">
+              <h3 class="product__new-price">
+                {{ formatter.format(product.price.new) }}
+              </h3>
+              <h3 class="product__old-price">
+                {{ formatter.format(product.price.old) }} ₫
+              </h3>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <!-- <div class="col-lg-3 col-md-6">
+              <div class="product__block">
+                  <div class="product__img">
+                      <img src="./assets/img/trending-product-1.jpeg" alt="">
+                      <div class="product__hover">
+                          <div class="product__hover-search">
+                              <i class="fas fa-search"></i>
+                          </div>
+                          <div class="product__hover-bag">
+                              <i class="fas fa-shopping-bag"></i>
+                          </div>
+                          <div class="product__hover-love">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                      <div class="product__sale">
+                          <h4>SALE</h4>
+                      </div>
+                  </div>
+                  <div class="product__rate">
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="product__name">White Polo Men’s T-Shirt</h3>
+                  <div class="product__price">
+                      <h3 class="product__new-price">$27.00</h3>
+                      <h3 class="product__old-price">$34.00</h3>
+                  </div>
+
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="product__block">
+                  <div class="product__img">
+                      <img src="./assets/img/trending-product-2.jpeg" alt="">
+                      <div class="product__hover">
+                          <div class="product__hover-search">
+                              <i class="fas fa-search"></i>
+                          </div>
+                          <div class="product__hover-bag">
+                              <i class="fas fa-shopping-bag"></i>
+                          </div>
+                          <div class="product__hover-love">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                      <div class="product__sale">
+                          <h4>SALE</h4>
+                      </div>
+                  </div>
+                  <div class="product__rate">
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="product__name">White Polo Men’s T-Shirt</h3>
+                  <div class="product__price">
+                      <h3 class="product__new-price">$27.00</h3>
+                      <h3 class="product__old-price">$34.00</h3>
+                  </div>
+
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="product__block">
+                  <div class="product__img">
+                      <img src="./assets/img/trending-product-3.jpeg" alt="">
+                      <div class="product__hover">
+                          <div class="product__hover-search">
+                              <i class="fas fa-search"></i>
+                          </div>
+                          <div class="product__hover-bag">
+                              <i class="fas fa-shopping-bag"></i>
+                          </div>
+                          <div class="product__hover-love">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                      <div class="product__sale">
+                          <h4>SALE</h4>
+                      </div>
+                  </div>
+                  <div class="product__rate">
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="product__name">White Polo Men’s T-Shirt</h3>
+                  <div class="product__price">
+                      <h3 class="product__new-price">$27.00</h3>
+                      <h3 class="product__old-price">$34.00</h3>
+                  </div>
+
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="product__block">
+                  <div class="product__img">
+                      <img src="./assets/img/trending-product-4.jpeg" alt="">
+                      <div class="product__hover">
+                          <div class="product__hover-search">
+                              <i class="fas fa-search"></i>
+                          </div>
+                          <div class="product__hover-bag">
+                              <i class="fas fa-shopping-bag"></i>
+                          </div>
+                          <div class="product__hover-love">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                      <div class="product__sale">
+                          <h4>SALE</h4>
+                      </div>
+                  </div>
+                  <div class="product__rate">
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star fa-star--rating"></i>
+                      <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="product__name">White Polo Men’s T-Shirt</h3>
+                  <div class="product__price">
+                      <h3 class="product__new-price">$27.00</h3>
+                      <h3 class="product__old-price">$34.00</h3>
+                  </div>
+
+              </div>
+          </div> -->
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="related-product__load-more">
+          <button (click)="loadMore()" class="related-product__load-more-btn">
+            LOAD MORE
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="toast">
+      <!-- Success -->
+      <div class="toast toast--success">
+        <div class="toast__icon">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="toast__body">
+          <h3 class="toast__title">Success</h3>
+          <p class="toast__msg">Add product success!</p>
+        </div>
+        <div class="toast__close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <!-- Error -->
+      <div class="toast toast--error">
+        <div class="toast__icon">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="toast__body">
+          <h3 class="toast__title">Error</h3>
+          <p class="toast__msg">Product is already added!</p>
+        </div>
+        <div class="toast__close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
