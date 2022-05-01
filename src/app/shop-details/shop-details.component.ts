@@ -37,7 +37,6 @@ export class ShopDetailsComponent implements OnInit {
         if (item.id == this.id) {
           this.product = item;
         }
-        // console.log(item)
       });
     });
   }
